@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Responsive meta for mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#1a0f2e" />
+  <title>Atharav Loves You ❤️</title>
+
+  <!-- Poppins font (cute, rounded, friendly) — non-blocking, graceful fallback -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+    media="print" onload="this.media='all'"
+  />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- ==================== ANIMATED GRADIENT BACKGROUND ==================== -->
+  <div class="bg-gradient" aria-hidden="true"></div>
+  <div class="bg-blur" aria-hidden="true"></div>
+
+  <!-- Landing heart pop overlay (canvas can't show ::before) -->
+  <div id="heart-pop" class="heart-pop" aria-hidden="true"></div>
+
+  <!-- ==================== FLOATING HEART PARTICLES CANVAS ==================== -->
+  <canvas id="hearts-bg" aria-hidden="true"></canvas>
+
+  <!-- ==================== SURPRISE FLOATING TEXTS (every 10s) ==================== -->
+  <div id="surprise-layer" aria-hidden="true"></div>
+
+  <!-- ==================== SOUND KIT (web-audio generated music, no files needed) ==================== -->
+  <!-- Optionally drop mp3 into assets/music/ and uncomment the <source> lines below -->
+  <audio id="music" loop preload="auto" style="display:none">
+    <!-- <source src="assets/music/romantic.mp3" type="audio/mpeg" /> -->
+  </audio>
+
+  <!-- ==================== MUSIC TOGGLE BUTTON ==================== -->
+  <button id="music-btn" class="music-btn" aria-label="Toggle music" title="Play / Pause music">
+    <span class="music-icon music-on">🎵</span>
+    <span class="music-icon music-off" hidden>🔇</span>
+  </button>
+
+  <!-- ==================== LANDING / MAIN CARD ==================== -->
+  <main id="stage" class="stage">
+    <section class="card glass" id="main-card">
+      <!-- Cute illustration: animated bear + panda hugging (emoji art, no file needed) -->
+      <div class="illustration" aria-hidden="true">
+        <div class="bubble">Reply me 🥺</div>
+        <div class="bear-panda">
+          <div class="bear">
+            <div class="ear ear-l"></div>
+            <div class="ear ear-r"></div>
+            <div class="bear-face"></div>
+          </div>
+          <div class="kiss">💞</div>
+          <div class="panda">
+            <div class="ear ear-l"></div>
+            <div class="ear ear-r"></div>
+            <div class="panda-face"></div>
+          </div>
+        </div>
+        <div class="illustration-hint">
+          <span>🧸</span><span>💝</span><span>🐼</span>
+        </div>
+        <!-- Replace with your own image if you like:
+             <img src="assets/images/hug.gif" alt="Bear and panda hugging" /> -->
+      </div>
+
+      <div class="buttons">
+        <button id="yes-btn" class="btn btn-yes">❤️ YES</button>
+        <button id="no-btn" class="btn btn-no">💔 NO</button>
+      </div>
+
+      <p id="no-message" class="no-message" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <!-- ==================== PROPOSAL SCENE (plays right after YES) ==================== -->
+  <div id="proposal-overlay" class="proposal-overlay" aria-hidden="true">
+    <div class="proposal-stage">
+      <div class="prop-side left">
+        <div class="prop-bear">
+          <div class="ear ear-l"></div>
+          <div class="ear ear-r"></div>
+          <div class="bear-face"></div>
+        </div>
+      </div>
+
+      <div class="prop-ring">💍</div>
+      <div class="kiss-burst">💋</div>
+      <div class="prop-sparkles">
+        <span class="ps s1">✨</span>
+        <span class="ps s2">✨</span>
+        <span class="ps s3">✨</span>
+      </div>
+
+      <div class="prop-side right">
+        <div class="prop-blush">💗</div>
+        <div class="prop-panda">
+          <div class="ear ear-l"></div>
+          <div class="ear ear-r"></div>
+          <div class="panda-face"></div>
+        </div>
+      </div>
+    </div>
+    <p id="proposal-caption" class="proposal-caption"></p>
+  </div>
+
+  <!-- ==================== CELEBRATION SCREEN (hidden until YES) ==================== -->
+  <section id="celebrate" class="celebrate" hidden>
+    <div class="celebrate-inner">
+      <div class="big-heart">💖</div>
+
+      <h2 id="typewriter-line" class="typewriter-line"></h2>
+      <p id="typewriter-sub" class="typewriter-sub"></p>
+
+      <p class="forever-line">
+        Forever <span class="heart-glow">&amp;</span> Always ❤️
+      </p>
+
+      <!-- Typewriter / appearing promises -->
+      <div class="promises">
+        <p class="promise">I Promise To Love You</p>
+        <p class="promise">Every Day</p>
+        <p class="promise">Every Smile</p>
+        <p class="promise">Every Moment</p>
+        <p class="promise">Every Heartbeat ❤️</p>
+      </div>
+
+      <!-- Cute countdown -->
+      <div class="countdown glass" id="countdown-card">
+        <h3>Since I Fell For You ❤️</h3>
+        <div class="countdown-grid">
+          <div class="count-box"><span id="cd-days">0</span><small>Days</small></div>
+          <div class="count-box"><span id="cd-hours">0</span><small>Hours</small></div>
+          <div class="count-box"><span id="cd-minutes">0</span><small>Minutes</small></div>
+          <div class="count-box"><span id="cd-seconds">0</span><small>Seconds</small></div>
+        </div>
+        <p class="count-hint">✨ easy to edit the start date in script.js ✨</p>
+      </div>
+
+      <!-- Love letter -->
+      <div class="letter glass">
+        <h3>💌 A Letter For You</h3>
+        <p class="letter-line">Meeting you was one of the most beautiful things that ever happened in my life.</p>
+        <p class="letter-line">Every smile of yours makes my day brighter.</p>
+        <p class="letter-line">Every conversation becomes my favorite memory.</p>
+        <p class="letter-line">Thank you for existing.</p>
+        <p class="letter-line">I don't know what the future holds...</p>
+        <p class="letter-line">But I know one thing.</p>
+        <p class="letter-line">I want to make you smile every single day.</p>
+        <p class="letter-heart">❤️</p>
+      </div>
+
+      <!-- Ending -->
+      <footer class="ending">
+        <p>Made with ❤️</p>
+        <p>Especially for You</p>
+        <p class="signature">– Atharav</p>
+      </footer>
+    </div>
+  </section>
+
+  <!-- ==================== LOVE FLOOD (fills screen on final YES) ==================== -->
+  <div id="love-flood" class="love-flood" hidden aria-hidden="true">
+    <h1 class="love-text">
+      <span>❤️</span> I LOVE YOU <span>❤️</span>
+    </h1>
+  </div>
+
+  <!-- Effects canvases (mouse trail confetti / fireworks) -->
+  <canvas id="fx-canvas" aria-hidden="true"></canvas>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
