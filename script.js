@@ -1,5 +1,5 @@
 /* ============================================================
-   script.js — Atharav Loves You ❤️
+   script.js — Atharva Loves You ❤️
    Everything: escaping NO button, floating hearts, typewriter,
    countdown, heart trail, confetti, fireworks, music, surprises.
    Vanilla JS only, all anim loops run on requestAnimationFrame.
@@ -15,8 +15,8 @@ const CONFIG = {
   fellForYou: new Date(2024, 5, 14, 18, 30),
 
   // Names / messages (easy to change)
-  myName: "Atharav",
-  typewriterMain: "Atharav Loves You ❤️",
+  myName: "Atharva",
+  typewriterMain: "Atharva Loves You ❤️",
   typewriterSub: "Kuchupuchu 🥺💖",
 
   // Funny messages for the escaping NO button
